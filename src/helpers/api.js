@@ -6,8 +6,8 @@ const BASE_URL = 'http://localhost:3001'
 
 export const getToken = async () => {
   const data = {
-    email: "ezes@gmail.com",
-    password: 'string',
+    email: "adm@admin.com",
+    password: '123',
   }
 
     const result = await axios.post(`${BASE_URL}/user/login`, data)
