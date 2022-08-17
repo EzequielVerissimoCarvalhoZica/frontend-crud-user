@@ -1,0 +1,29 @@
+.header-user-model {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1.5px solid gray;
+}
+
+.header-user-model > div {
+  align-items: center;
+  display: flex;
+  width: 85%;
+  justify-content: space-between;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.header-user-model > div > h3 {
+  margin: 0;
+}
+
+.container-edit-exit {
+  width: 80px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.container-edit-exit img:hover {
+  cursor: pointer;
+}
