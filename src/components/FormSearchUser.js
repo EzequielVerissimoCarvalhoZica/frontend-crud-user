@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { insertSearch, reload } from '../app/slices/searchedUserSlice';
+import { insertSearch, reload } from '../app/slices/userSlice';
 
 export default function FormSearchUser() {
   const [search, setSearch] = useState('');
