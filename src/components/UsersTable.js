@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Table from 'react-bootstrap/Table';
 import { useSelector } from 'react-redux';
 import { makeGet } from '../helpers/api';
 import UserCard from './UserCard';
@@ -7,7 +8,7 @@ export default function UsersTable() {
   const [users, setUsers] = useState([]);
   const [usersFiltered, setUsersFiltered] = useState([]);
   const [error, setError] = useState();
-  const reload = useSelector((state) => state.searchedUser.reload)
+  const reload = useSelector((state) => state.user.reload)
 
   useEffect(() => {
     async function getOrderDatail() {
@@ -21,7 +22,7 @@ export default function UsersTable() {
     getOrderDatail();
   }, [reload])
 
-  const searched = useSelector((state) => state.searchedUser.search)
+  const searched = useSelector((state) => state.user.search)
   useEffect(() => {
     const newUsers = users.filter(({ name }) => name.toLowerCase().includes(searched))
     setUsersFiltered(newUsers)
@@ -31,7 +32,7 @@ export default function UsersTable() {
       {
         error ?
         <span>{`${error.status} ${error.message}`}</span>:
-        <table>
+        <Table>
           <thead>
             <tr>
               <th>ID</th>
@@ -44,7 +45,7 @@ export default function UsersTable() {
           <tbody>
             <UserCard  allUsers={usersFiltered} />
           </tbody>
-        </table>
+        </Table>
       }
     </>
   )
