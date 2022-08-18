@@ -1,13 +1,12 @@
 import axios from 'axios';
-// import dotenv from 'dotenv'
-// dotenv.config()
 
-const BASE_URL = 'http://localhost:3001'
+const PORT = 3004
+const BASE_URL = `http://localhost:${PORT}`
 
 export const getToken = async () => {
   const data = {
     email: "adm@admin.com",
-    password: '123',
+    password: process.env.REACT_APP_PASSWORD
   }
 
     const result = await axios.post(`${BASE_URL}/user/login`, data)
