@@ -1,9 +1,8 @@
-/* eslint-disable no-unused-vars */
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Modal from 'react-bootstrap/Modal';
-import { showUserEdit } from '../app/slices/userSlice';
 import { Tab, Tabs } from 'react-bootstrap';
+import { showUserEdit } from '../app/slices/userSlice';
 import UserInformationsModal from './UserInformationsModal';
 import UserLinksModal from './UserLinksModal';
 
@@ -31,7 +30,7 @@ export default function UserEdit() {
         <Tab eventKey="profile" title="Vínculos">
           <UserLinksModal />
         </Tab>
-     </Tabs>
+      </Tabs>
     </Modal>
   );
 }

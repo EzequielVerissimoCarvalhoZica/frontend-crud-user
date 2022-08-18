@@ -8,11 +8,11 @@ import { insertSearch, reload } from '../app/slices/userSlice';
 
 export default function FormSearchUser() {
   const [search, setSearch] = useState('');
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const handleChange = ({ target }) => {
-    setSearch(target.value)
-    dispatch(insertSearch(target.value))
+    setSearch(target.value);
+    dispatch(insertSearch(target.value));
   };
 
   const changeReload = () => {
@@ -20,10 +20,10 @@ export default function FormSearchUser() {
     setSearch('');
   };
   return (
-    <Form className='d-flex mb-4'>
+    <Form className="d-flex mb-4">
       <Button as={Col} type="button">Novo</Button>
-      <Form.Control type="text" value={search} name="search" onChange={handleChange} placeholder="Pesquisar Usuários"/>
+      <Form.Control type="text" value={search} name="search" onChange={handleChange} placeholder="Pesquisar Usuários" />
       <Button type="button" onClick={changeReload}>Atualizar</Button>
     </Form>
-  )
+  );
 }

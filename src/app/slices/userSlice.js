@@ -1,11 +1,12 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit';
+/* eslint no-param-reassign: ["error", { "props": false }] */
 
 const initialState = {
   search: '',
   reload: false,
   show: false,
   user: {},
-  showEdit: false
+  showEdit: false,
 };
 
 export const userSlice = createSlice({
@@ -13,24 +14,25 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     insertSearch: (state, action) => {
-      state.search = action.payload
+      state.search = action.payload;
     },
     showUserDetail: (state) => {
-      state.show = !state.show
+      state.show = !state.show;
     },
     showUserEdit: (state) => {
-      state.showEdit = !state.showEdit
+      state.showEdit = !state.showEdit;
     },
     reload: (state) => {
-      state.reload = !state.reload
+      state.reload = !state.reload;
     },
     insertUser: (state, action) => {
-      state.user = action.payload
+      state.user = action.payload;
     },
   },
-})
+});
 
-// Action creators are generated for each case reducer function
-export const { insertSearch, reload, showUserDetail, showUserEdit, insertUser } = userSlice.actions
+export const {
+  insertSearch, reload, showUserDetail, showUserEdit, insertUser,
+} = userSlice.actions;
 
-export default userSlice.reducer
+export default userSlice.reducer;

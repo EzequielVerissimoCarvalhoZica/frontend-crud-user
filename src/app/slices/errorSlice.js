@@ -1,5 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit'
-
+import { createSlice } from '@reduxjs/toolkit';
+/* eslint no-param-reassign: ["error", { "props": false }] */
 const initialState = {
   errorMessage: '',
 };
@@ -9,12 +9,11 @@ export const errorSlice = createSlice({
   initialState,
   reducers: {
     changeError: (state, action) => {
-      state.errorMessage = action.payload
-    }
+      state.errorMessage = action.payload;
+    },
   },
-})
+});
 
-// Action creators are generated for each case reducer function
-export const { changeError } = errorSlice.actions
+export const { changeError } = errorSlice.actions;
 
-export default errorSlice.reducer
+export default errorSlice.reducer;

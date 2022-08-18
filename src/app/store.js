@@ -5,6 +5,8 @@ import errorReducer from './slices/errorSlice';
 export const store = configureStore({
   reducer: {
     user: userReducer,
-    error: errorReducer
+    error: errorReducer,
   },
-})
+});
+
+export const lint = '';

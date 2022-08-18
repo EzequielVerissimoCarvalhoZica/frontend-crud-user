@@ -9,33 +9,31 @@ import UserCard from './UserCard';
 export default function UsersTable() {
   const [users, setUsers] = useState([]);
   const [usersFiltered, setUsersFiltered] = useState([]);
-  const error = useSelector((state) => state.error.errorMessage)
-  const reload = useSelector((state) => state.user.reload)
+  const error = useSelector((state) => state.error.errorMessage);
+  const reload = useSelector((state) => state.user.reload);
   const dispatch = useDispatch();
 
   useEffect(() => {
     async function getOrderDatail() {
       const response = await makeGet('user');
 
-      if (response.status !== 200)  dispatch(changeError('Erro ao listar usuarios'))
+      if (response.status !== 200) dispatch(changeError('Erro ao listar usuarios'));
 
-      
-      setUsers(response.data)
-      setUsersFiltered(response.data)
+      setUsers(response.data);
+      setUsersFiltered(response.data);
     }
     getOrderDatail();
-  }, [reload])
+  }, [reload]);
 
-  const searched = useSelector((state) => state.user.search)
+  const searched = useSelector((state) => state.user.search);
   useEffect(() => {
-    const newUsers = users.filter(({ name }) => name.toLowerCase().includes(searched))
-    setUsersFiltered(newUsers)
-  }, [searched])
+    const newUsers = users.filter(({ name }) => name.toLowerCase().includes(searched));
+    setUsersFiltered(newUsers);
+  }, [searched]);
   return (
-    <>
-      {
-        error ?
-        <AlertError />:
+    error
+      ? <AlertError />
+      : (
         <Table>
           <thead>
             <tr>
@@ -47,10 +45,9 @@ export default function UsersTable() {
             </tr>
           </thead>
           <tbody>
-            <UserCard  allUsers={usersFiltered} />
+            <UserCard allUsers={usersFiltered} />
           </tbody>
         </Table>
-      }
-    </>
-  )
+      )
+  );
 }
