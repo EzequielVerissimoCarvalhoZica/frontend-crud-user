@@ -1,13 +1,21 @@
 import React from 'react';
+import './Users.css'
 import FormSearchUser from '../components/FormSearchUser';
 import UsersTable from '../components/UsersTable';
 
 function Users() {
   return (
     <div>
-      <h1>Usuários</h1>
-      <FormSearchUser />
-      <UsersTable />
+      <header className='container-header-users'>
+        <h2>Usuários</h2>
+      </header>
+      <body className="container-users">
+        <div className="container-form-search">
+          <FormSearchUser />
+        </div>
+        <UsersTable />
+      </body>
+
     </div>
   );
 }

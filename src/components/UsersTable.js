@@ -1,20 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import Table from 'react-bootstrap/Table';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { changeError } from '../app/slices/errorSlice';
 import { makeGet } from '../helpers/api';
+import AlertError from './AlertDismissible/AlertError';
 import UserCard from './UserCard';
 
 export default function UsersTable() {
   const [users, setUsers] = useState([]);
   const [usersFiltered, setUsersFiltered] = useState([]);
-  const [error, setError] = useState();
+  const error = useSelector((state) => state.error.errorMessage)
   const reload = useSelector((state) => state.user.reload)
+  const dispatch = useDispatch();
 
   useEffect(() => {
     async function getOrderDatail() {
       const response = await makeGet('user');
 
-      if (response.status !== 200) setError({ status: response.status, message: response.statusText})
+      if (response.status !== 200)  dispatch(changeError('Erro ao listar usuarios'))
+
       
       setUsers(response.data)
       setUsersFiltered(response.data)
@@ -31,7 +35,7 @@ export default function UsersTable() {
     <>
       {
         error ?
-        <span>{`${error.status} ${error.message}`}</span>:
+        <AlertError />:
         <Table>
           <thead>
             <tr>

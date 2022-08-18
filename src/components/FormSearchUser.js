@@ -1,4 +1,8 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
+import Form from 'react-bootstrap/Form';
+import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
 import { useDispatch } from 'react-redux';
 import { insertSearch, reload } from '../app/slices/userSlice';
 
@@ -10,15 +14,16 @@ export default function FormSearchUser() {
     setSearch(target.value)
     dispatch(insertSearch(target.value))
   };
-  const changeReload = ({ target }) => {
-    dispatch(reload(target.value));
+
+  const changeReload = () => {
+    dispatch(reload());
     setSearch('');
   };
   return (
-    <form action="">
-      <button type="button">Novo</button>
-      <input type="text" value={search} name="search" onChange={handleChange} placeholder="Pesquisar Usuários" id=""/>
-      <button type="button" onClick={changeReload}>Atualizar</button>
-    </form>
+    <Form className='d-flex mb-4'>
+      <Button as={Col} type="button">Novo</Button>
+      <Form.Control type="text" value={search} name="search" onChange={handleChange} placeholder="Pesquisar Usuários"/>
+      <Button type="button" onClick={changeReload}>Atualizar</Button>
+    </Form>
   )
 }

@@ -3,7 +3,7 @@ import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { useDispatch, useSelector } from "react-redux";
-import { showUserEdit } from "../app/slices/userSlice";
+import { reload, showUserEdit } from "../app/slices/userSlice";
 import { makePut } from "../helpers/api";
 
 export default function UserInformationsModal() {
@@ -40,6 +40,8 @@ export default function UserInformationsModal() {
     }
     const result = await makePut(`user/${user.id}`, body)
     console.log(result);
+    dispatch(showUserEdit())
+    dispatch(reload())
   }
 
   return (

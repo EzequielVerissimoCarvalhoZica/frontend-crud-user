@@ -4,6 +4,7 @@ import './UserDetail.css'
 import { useDispatch, useSelector } from 'react-redux';
 import Modal from 'react-bootstrap/Modal';
 import { showUserDetail, showUserEdit } from '../app/slices/userSlice';
+import { formatDate } from '../helpers/formatDate';
 
 export default function UserDetail() {
   const show = useSelector((state) => state.user.show)
@@ -33,9 +34,9 @@ export default function UserDetail() {
         </header>
         <Modal.Body>
           <h3>Detalhes do usuário</h3>
-          <p>Telefone</p>
+          <p>(00)9999-9999</p>
           <p>{user.email}</p>
-          <p>{user.updatedAt}</p>
+          <p>{formatDate(user.updatedAt)}</p>
         </Modal.Body>
         <Modal.Footer>
         </Modal.Footer>
