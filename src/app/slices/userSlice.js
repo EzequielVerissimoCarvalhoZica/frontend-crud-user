@@ -6,7 +6,7 @@ const initialState = {
   search: '',
   reload: false,
   showDetail: false,
-  showEdit: false,
+  modalType: '',
 };
 
 export const userSlice = createSlice({
@@ -19,8 +19,8 @@ export const userSlice = createSlice({
     showUserDetail: (state) => {
       state.showDetail = !state.showDetail;
     },
-    showUserEdit: (state) => {
-      state.showEdit = !state.showEdit;
+    showUserCustomModal: (state, action) => {
+      state.modalType = action.payload;
     },
     setReload: (state) => {
       state.reload = !state.reload;
@@ -32,7 +32,7 @@ export const userSlice = createSlice({
 });
 
 export const {
-  setUserSearched, setReload, showUserDetail, showUserEdit, setCurrentUser,
+  setUserSearched, setReload, showUserDetail, setCurrentUser, showUserCustomModal,
 } = userSlice.actions;
 
 export default userSlice.reducer;

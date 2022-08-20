@@ -4,7 +4,7 @@ import React from 'react';
 import './UserDetail.css';
 import { useDispatch, useSelector } from 'react-redux';
 import Modal from 'react-bootstrap/Modal';
-import { showUserDetail, showUserEdit } from '../../../app/slices/userSlice';
+import { showUserDetail, showUserCustomModal } from '../../../app/slices/userSlice';
 import { formatDate } from '../../../helpers/formatDate';
 
 export default function UserDetail() {
@@ -17,7 +17,7 @@ export default function UserDetail() {
 
   const handleEditUser = () => {
     handleClose();
-    dispatch(showUserEdit());
+    dispatch(showUserCustomModal('edit'));
   };
 
   return (

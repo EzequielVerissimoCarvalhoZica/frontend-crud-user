@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import { useDispatch } from 'react-redux';
-import { setUserSearched, setReload } from '../app/slices/userSlice';
+import { setUserSearched, setReload, showUserCustomModal } from '../app/slices/userSlice';
 
 export default function FormSearchUser() {
   const [search, setSearch] = useState('');
@@ -14,6 +14,9 @@ export default function FormSearchUser() {
     setSearch(target.value);
     dispatch(setUserSearched(target.value));
   };
+  const handleCreateUser = () => {
+    dispatch(showUserCustomModal('create'));
+  };
 
   const changeReload = () => {
     dispatch(setReload());
@@ -21,7 +24,7 @@ export default function FormSearchUser() {
   };
   return (
     <Form className="d-flex mb-4">
-      <Button as={Col} type="button">Novo</Button>
+      <Button as={Col} type="button" onClick={handleCreateUser}>Novo</Button>
       <Form.Control type="text" value={search} name="search" onChange={handleChange} placeholder="Pesquisar Usuários" />
       <Button type="button" onClick={changeReload}>Atualizar</Button>
     </Form>
