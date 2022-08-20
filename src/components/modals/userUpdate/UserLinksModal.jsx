@@ -2,11 +2,11 @@ import React from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import { useDispatch } from 'react-redux';
-import { showUserEdit } from '../../../app/slices/userSlice';
+import { showUserCustomModal } from '../../../app/slices/userSlice';
 
 export default function UserLinksModal() {
   const dispatch = useDispatch();
-  const handleClose = () => dispatch(showUserEdit());
+  const handleClose = () => dispatch(showUserCustomModal(''));
 
   return (
     <>

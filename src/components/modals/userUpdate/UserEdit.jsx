@@ -2,19 +2,19 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Modal from 'react-bootstrap/Modal';
 import { Tab, Tabs } from 'react-bootstrap';
-import { showUserEdit } from '../../../app/slices/userSlice';
-import UserInformationsModal from './UserInformationsModal';
+import { showUserCustomModal } from '../../../app/slices/userSlice';
 import UserLinksModal from './UserLinksModal';
+import CustomFormModal from '../genericFormModal/CustomFormModal';
 
 export default function UserEdit() {
-  const showEdit = useSelector((state) => state.user.showEdit);
+  const modalType = useSelector((state) => state.user.modalType);
 
   const dispatch = useDispatch();
 
-  const handleClose = () => dispatch(showUserEdit());
+  const handleClose = () => dispatch(showUserCustomModal(''));
 
   return (
-    <Modal show={showEdit} onHide={handleClose}>
+    <Modal show={modalType === 'edit'} onHide={handleClose}>
       <Modal.Header closeButton>
         <Modal.Title>Editar Usuário</Modal.Title>
       </Modal.Header>
@@ -25,7 +25,7 @@ export default function UserEdit() {
         justify
       >
         <Tab eventKey="home" title="Informações">
-          <UserInformationsModal />
+          <CustomFormModal />
         </Tab>
         <Tab eventKey="profile" title="Vínculos">
           <UserLinksModal />

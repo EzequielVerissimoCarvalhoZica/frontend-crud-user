@@ -6,11 +6,12 @@ import { useDispatch } from 'react-redux';
 import Dropdown from 'react-bootstrap/Dropdown';
 import { makeDelete } from '../../helpers/api';
 import {
-  setCurrentUser, setReload, showUserDetail, showUserEdit,
+  setCurrentUser, setReload, showUserCustomModal, showUserDetail,
 } from '../../app/slices/userSlice';
 import UserDetail from '../modals/userDetail/UserDetail';
 import UserEdit from '../modals/userUpdate/UserEdit';
 import { changeError } from '../../app/slices/errorSlice';
+import UserCreate from '../modals/userCreate/UserCreate';
 
 export default function UserCard({ allUsers }) {
   const dispatch = useDispatch();
@@ -22,7 +23,7 @@ export default function UserCard({ allUsers }) {
 
   const handleEditUser = (user) => {
     dispatch(setCurrentUser(user));
-    dispatch(showUserEdit());
+    dispatch(showUserCustomModal('edit'));
   };
   const handleDeleteUser = async (id) => {
     const response = await makeDelete(`user/${id}`);
@@ -36,6 +37,7 @@ export default function UserCard({ allUsers }) {
     <tbody>
       <UserDetail />
       <UserEdit />
+      <UserCreate />
       {
         allUsers.map((user) => (
           <tr key={user.id} className="container-user-card">
