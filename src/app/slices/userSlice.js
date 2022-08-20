@@ -2,10 +2,10 @@ import { createSlice } from '@reduxjs/toolkit';
 /* eslint no-param-reassign: ["error", { "props": false }] */
 
 const initialState = {
+  user: {},
   search: '',
   reload: false,
-  show: false,
-  user: {},
+  showDetail: false,
   showEdit: false,
 };
 
@@ -13,26 +13,26 @@ export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    insertSearch: (state, action) => {
+    setUserSearched: (state, action) => {
       state.search = action.payload;
     },
     showUserDetail: (state) => {
-      state.show = !state.show;
+      state.showDetail = !state.showDetail;
     },
     showUserEdit: (state) => {
       state.showEdit = !state.showEdit;
     },
-    reload: (state) => {
+    setReload: (state) => {
       state.reload = !state.reload;
     },
-    insertUser: (state, action) => {
+    setCurrentUser: (state, action) => {
       state.user = action.payload;
     },
   },
 });
 
 export const {
-  insertSearch, reload, showUserDetail, showUserEdit, insertUser,
+  setUserSearched, setReload, showUserDetail, showUserEdit, setCurrentUser,
 } = userSlice.actions;
 
 export default userSlice.reducer;

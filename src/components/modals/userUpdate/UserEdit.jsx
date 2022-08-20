@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Modal from 'react-bootstrap/Modal';
 import { Tab, Tabs } from 'react-bootstrap';
-import { showUserEdit } from '../app/slices/userSlice';
+import { showUserEdit } from '../../../app/slices/userSlice';
 import UserInformationsModal from './UserInformationsModal';
 import UserLinksModal from './UserLinksModal';
 
