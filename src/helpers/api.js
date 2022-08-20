@@ -1,11 +1,11 @@
 import axios from 'axios';
 
-const PORT = 3006;
+const PORT = 3001;
 const BASE_URL = `http://localhost:${PORT}`;
 
 export const getToken = async () => {
   const data = {
-    email: 'adm@admin.com',
+    email: process.env.REACT_APP_EMAIL,
     password: process.env.REACT_APP_PASSWORD,
   };
 
