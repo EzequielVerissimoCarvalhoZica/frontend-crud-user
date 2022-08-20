@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import Table from 'react-bootstrap/Table';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeError } from '../app/slices/errorSlice';
-import { makeGet } from '../helpers/api';
-import AlertError from './AlertDismissible/AlertError';
-import UserCard from './UserCard';
+import { changeError } from '../../app/slices/errorSlice';
+import { makeGet } from '../../helpers/api';
+import AlertError from '../alerts/AlertError';
+import UsersTableBody from './UsersTableBody';
 
 export default function UsersTable() {
   const [users, setUsers] = useState([]);
@@ -44,9 +44,8 @@ export default function UsersTable() {
               <th>Ações</th>
             </tr>
           </thead>
-          <tbody>
-            <UserCard allUsers={usersFiltered} />
-          </tbody>
+          <UsersTableBody allUsers={usersFiltered} />
+
         </Table>
       )
   );

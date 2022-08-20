@@ -4,8 +4,8 @@ import React from 'react';
 import './UserDetail.css';
 import { useDispatch, useSelector } from 'react-redux';
 import Modal from 'react-bootstrap/Modal';
-import { showUserDetail, showUserEdit } from '../app/slices/userSlice';
-import { formatDate } from '../helpers/formatDate';
+import { showUserDetail, showUserEdit } from '../../../app/slices/userSlice';
+import { formatDate } from '../../../helpers/formatDate';
 
 export default function UserDetail() {
   const show = useSelector((state) => state.user.show);

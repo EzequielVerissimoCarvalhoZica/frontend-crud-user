@@ -3,8 +3,8 @@ import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { useDispatch, useSelector } from 'react-redux';
-import { reload, showUserEdit } from '../app/slices/userSlice';
-import { makePut } from '../helpers/api';
+import { reload, showUserEdit } from '../../../app/slices/userSlice';
+import { makePut } from '../../../helpers/api';
 
 export default function UserInformationsModal() {
   const [inputs, setInputs] = useState({
@@ -56,7 +56,7 @@ export default function UserInformationsModal() {
             autoFocus
           />
         </Form.Group>
-        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+        <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
           <Form.Control
             name="email"
             onChange={handleChange}
@@ -67,7 +67,7 @@ export default function UserInformationsModal() {
             autoFocus
           />
         </Form.Group>
-        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+        <Form.Group className="mb-3" controlId="exampleForm.ControlInput3">
           <Form.Control
             name="dateOfBirth"
             onChange={handleChange}
@@ -78,7 +78,7 @@ export default function UserInformationsModal() {
           />
           <Form.Text>Opcional</Form.Text>
         </Form.Group>
-        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+        <Form.Group className="mb-3" controlId="exampleForm.ControlInput4">
           <Form.Control
             name="password"
             required
@@ -89,7 +89,7 @@ export default function UserInformationsModal() {
             autoFocus
           />
         </Form.Group>
-        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+        <Form.Group className="mb-3" controlId="exampleForm.ControlInput5">
           <Form.Control
             required
             type="password"
