@@ -2,10 +2,10 @@ import { createSlice } from '@reduxjs/toolkit';
 /* eslint no-param-reassign: ["error", { "props": false }] */
 
 const initialState = {
+  user: {},
   search: '',
   reload: false,
-  showUser: false,
-  user: {},
+  showDetail: false,
   showEdit: false,
 };
 
@@ -17,7 +17,7 @@ export const userSlice = createSlice({
       state.search = action.payload;
     },
     showUserDetail: (state) => {
-      state.showUser = !state.showUser;
+      state.showDetail = !state.showDetail;
     },
     showUserEdit: (state) => {
       state.showEdit = !state.showEdit;
