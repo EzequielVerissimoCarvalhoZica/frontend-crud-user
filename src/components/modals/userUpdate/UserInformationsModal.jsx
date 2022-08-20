@@ -11,7 +11,11 @@ export default function UserInformationsModal() {
     name: '',
     email: '',
     dateOfBirth: '',
-    password: '',
+    password1: '',
+    password2: '',
+    phoneNumber: '',
+    status: true,
+    error: '',
   });
   const handleChange = ({ target }) => {
     const { value } = target;
@@ -31,10 +35,18 @@ export default function UserInformationsModal() {
   const updateUser = async (event) => {
     event.preventDefault();
 
+    if (inputs.password1 !== inputs.password2) {
+      setInputs({
+        ...inputs,
+        error: 'As senhas precisam ser iguais',
+      });
+      return;
+    }
+
     const body = {
       name: inputs.name,
       email: inputs.email,
-      password: inputs.password,
+      password: inputs.password1,
     };
     await makePut(`user/${user.id}`, body);
 
@@ -80,25 +92,60 @@ export default function UserInformationsModal() {
         </Form.Group>
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput4">
           <Form.Control
-            name="password"
+            name="phoneNumber"
             required
             onChange={handleChange}
-            value={inputs.password}
+            value={inputs.phoneNumber}
+            pattern="[0-9]{2} [0-9]{5}-[0-9]{4}"
+            type="tel"
+            placeholder="Ex: 11 98888-7777"
+            autoFocus
+          />
+          <Form.Text>Formato: DDD 00000-0000</Form.Text>
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="exampleForm.ControlInput5">
+          <Form.Text>Status: </Form.Text>
+          <Form.Check
+            checked={inputs.status}
+            onClick={() => {
+              setInputs({
+                ...inputs,
+                status: !inputs.status,
+              });
+            }}
+            onChange={() => {}}
+            inline
+            label="Ativo"
+            name="status"
+            type="radio"
+            id="ativo"
+          />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="exampleForm.ControlInput6">
+          <Form.Control
+            name="password1"
+            required
+            onChange={handleChange}
+            value={inputs.password1}
             type="password"
             placeholder="Senha *"
             autoFocus
           />
         </Form.Group>
-        <Form.Group className="mb-3" controlId="exampleForm.ControlInput5">
+        <Form.Group className="mb-3" controlId="exampleForm.ControlInput7">
           <Form.Control
+            name="password2"
             required
+            onChange={handleChange}
+            value={inputs.password2}
             type="password"
-            placeholder="Senha"
+            placeholder="Senha *"
             autoFocus
           />
         </Form.Group>
       </Modal.Body>
       <Modal.Footer>
+        { inputs.error && <Form.Text bsPrefix="">{inputs.error}</Form.Text> }
         <Button variant="outline-primary" onClick={handleClose}>
           Voltar
         </Button>
