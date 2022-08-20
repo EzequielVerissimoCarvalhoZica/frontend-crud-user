@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import Dropdown from 'react-bootstrap/Dropdown';
 import { makeDelete } from '../../helpers/api';
 import {
-  insertUser, reload, showUserDetail, showUserEdit,
+  setCurrentUser, setReload, showUserDetail, showUserEdit,
 } from '../../app/slices/userSlice';
 import UserDetail from '../modals/userDetail/UserDetail';
 import UserEdit from '../modals/userUpdate/UserEdit';
@@ -17,11 +17,11 @@ export default function UserCard({ allUsers }) {
 
   const setUserInGlobalState = (user) => {
     dispatch(showUserDetail());
-    dispatch(insertUser(user));
+    dispatch(setCurrentUser(user));
   };
 
   const handleEditUser = (user) => {
-    dispatch(insertUser(user));
+    dispatch(setCurrentUser(user));
     dispatch(showUserEdit());
   };
   const handleDeleteUser = async (id) => {
@@ -29,7 +29,7 @@ export default function UserCard({ allUsers }) {
     if (response.status !== 200) {
       dispatch(changeError('Erro ao excluir usuario'));
     } else {
-      dispatch(reload());
+      dispatch(setReload());
     }
   };
   return (

@@ -1,7 +1,7 @@
 import React from 'react';
 import './Users.css';
 import FormSearchUser from '../components/FormSearchUser';
-import UsersTable from '../components/UsersTable';
+import UsersTable from '../components/table/UsersTable';
 
 function Users() {
   return (

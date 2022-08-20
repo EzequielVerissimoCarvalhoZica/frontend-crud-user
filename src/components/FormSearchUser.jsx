@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import { useDispatch } from 'react-redux';
-import { insertSearch, reload } from '../app/slices/userSlice';
+import { setUserSearched, setReload } from '../app/slices/userSlice';
 
 export default function FormSearchUser() {
   const [search, setSearch] = useState('');
@@ -12,11 +12,11 @@ export default function FormSearchUser() {
 
   const handleChange = ({ target }) => {
     setSearch(target.value);
-    dispatch(insertSearch(target.value));
+    dispatch(setUserSearched(target.value));
   };
 
   const changeReload = () => {
-    dispatch(reload());
+    dispatch(setReload());
     setSearch('');
   };
   return (
